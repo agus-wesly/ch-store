@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "encoding": "^0.1.13",
+    "firebase": "^9.15.0",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0"
