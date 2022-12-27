@@ -1,4 +1,5 @@
 "use client";
+
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRef, useState } from "react";
 import { auth, db } from "../../utils/firebase";
@@ -38,6 +39,8 @@ const page = () => {
         name: nameRef.current.value,
         isHandsome: false,
       });
+
+      setLoading(false);
 
       window.alert("Upload");
 

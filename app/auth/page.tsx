@@ -1,9 +1,9 @@
 "use client";
 
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../../utils/firebase";
-import { authContext } from "../ProviderAuth";
-import { FormEvent, useContext, useRef } from "react";
+// import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+// import { auth } from "../../utils/firebase";
+// import { authContext } from "../../ProviderAuth";
+import { FormEvent, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -12,27 +12,29 @@ const page = () => {
   const pwdRef = useRef(null);
   const router = useRouter();
 
-  const { dispatch } = useContext(authContext);
+  // const { dispatch } = useContext(authContext);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
 
   const handleGoogleLogin = async () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        dispatch({
-          type: "LOGIN",
-          payload: user,
-        });
-        localStorage.setItem("credit", JSON.stringify(user));
-        router.replace("/");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    console.log("Tes");
+
+    // const provider = new GoogleAuthProvider();
+    // signInWithPopup(auth, provider)
+    //   .then((result) => {
+    //     const user = result.user;
+    //     dispatch({
+    //       type: "LOGIN",
+    //       payload: user,
+    //     });
+    //     localStorage.setItem("credit", JSON.stringify(user));
+    //     router.replace("/");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (
