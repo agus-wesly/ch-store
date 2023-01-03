@@ -25,3 +25,22 @@ type Action = {
   type: "LOGIN" | "LOGOUT";
   payload: any;
 };
+
+type Categories = {
+  img: string;
+  title: string;
+  subTitel: string;
+}[];
+
+type Product = {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  rating: {
+    count: number;
+    rate: string;
+  };
+};

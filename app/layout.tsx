@@ -1,15 +1,26 @@
 import React from "react";
 import "../styles/globals.css";
+const ProviderAuth = dynamic(() => import("../ProviderAuth"), { ssr: false });
+import { Epilogue } from "@next/font/google";
+import dynamic from "next/dynamic";
 
-export default function RootLayout({
-  children,
-}: {
+const epilogue = Epilogue({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-epilogue",
+});
+
+interface IProps {
   children: React.ReactNode;
-}) {
+}
+
+export default function RootLayout({ children }: IProps) {
   return (
-    <html>
+    <html className={epilogue.variable}>
       <head />
-      <body className="bg-slate-50">{children}</body>
+      <body className="bg-neutral-100 max-w-[100vw] overflow-x-hidden">
+        <ProviderAuth>{children}</ProviderAuth>
+      </body>
     </html>
   );
 }

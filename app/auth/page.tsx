@@ -1,45 +1,37 @@
 "use client";
 
-// import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-// import { auth } from "../../utils/firebase";
-// import { authContext } from "../../ProviderAuth";
 import { FormEvent, useRef } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const page = () => {
-  const emailRef = useRef(null);
-  const pwdRef = useRef(null);
-  const router = useRouter();
-
-  // const { dispatch } = useContext(authContext);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const pwdRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    try {
+      if (emailRef.current && pwdRef.current) {
+        await signIn("credentials", {
+          username: emailRef.current.value,
+          password: pwdRef.current.value,
+          redirect: true,
+          callbackUrl: "/",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleGoogleLogin = async () => {
-    console.log("Tes");
-
-    // const provider = new GoogleAuthProvider();
-    // signInWithPopup(auth, provider)
-    //   .then((result) => {
-    //     const user = result.user;
-    //     dispatch({
-    //       type: "LOGIN",
-    //       payload: user,
-    //     });
-    //     localStorage.setItem("credit", JSON.stringify(user));
-    //     router.replace("/");
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+  const handleGoogleLogin = () => {
+    signIn("google", {
+      callbackUrl: "http://localhost:3000/",
+    });
   };
 
   return (
     <div className="mt-16 mx-auto max-w-[290px] gap-3 items-center flex flex-col ">
-      <Link href={"/products/2"}>Product Page</Link>
       <h1 className="text-4xl font-semibold text-black mb-5">Sign In</h1>
       <form className="flex flex-col gap-3 text-lg" onSubmit={handleSubmit}>
         <input

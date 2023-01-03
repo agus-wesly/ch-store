@@ -1,19 +1,18 @@
 "use client";
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { auth, db } from "../../utils/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { FormEvent } from "react";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const page = () => {
-  const [loading, setLoading] = useState(false);
   const emailRef = useRef<HTMLInputElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const passRef = useRef<HTMLInputElement>(null);
   const confirmRef = useRef<HTMLInputElement>(null);
-  // const router = useRouter();
+  const router = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -24,33 +23,25 @@ const page = () => {
       nameRef.current &&
       passRef.current.value === confirmRef.current.value
     ) {
-      setLoading(true);
-      console.log(
-        emailRef.current.value,
-        passRef.current.value,
-        nameRef.current.value
-      );
       const newUser = await createUserWithEmailAndPassword(
         auth,
         emailRef.current.value,
         passRef.current.value
       );
+
       await setDoc(doc(db, "users", newUser.user.uid), {
         name: nameRef.current.value,
         isHandsome: false,
       });
+      console.log("created");
 
-      setLoading(false);
-
-      window.alert("Upload");
-
-      // router.replace("/auth");
+      router.push("/");
     }
   };
   return (
     <div className="mt-16 mx-auto max-w-[290px] gap-3 items-center flex flex-col ">
       <h1 className="text-4xl font-semibold text-black mb-5">Sign Up</h1>
-      {loading && <p>Loading...</p>}
+
       <form className="flex flex-col gap-3 text-lg" onSubmit={handleSubmit}>
         <input
           placeholder="Name"
