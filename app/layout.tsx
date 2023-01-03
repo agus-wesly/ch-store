@@ -18,7 +18,7 @@ export default function RootLayout({ children }: IProps) {
   return (
     <html className={epilogue.variable}>
       <head />
-      <body className="bg-neutral-100 max-w-[100vw] overflow-x-hidden">
+      <body className="bg-neutral-100">
         <ProviderAuth>{children}</ProviderAuth>
       </body>
     </html>

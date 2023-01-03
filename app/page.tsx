@@ -8,7 +8,7 @@ import Footer from "./Footer";
 
 const page = () => {
   return (
-    <div>
+    <div className="w-screen overflow-x-hidden">
       <Navbar />
       <Homepage />
       <Categories />

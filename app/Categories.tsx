@@ -2,7 +2,7 @@ import { Categories as allCategories } from "../constant";
 
 function Categories() {
   return (
-    <div className="max-w-6xl mx-auto py-5 px-10 space-y-5">
+    <div className="max-w-6xl mx-auto py-5 px-5 lg:px-10 space-y-5">
       <h1 className="text-xl text-black/95 font-bold">
         Explore <span className="text-primary font-extrabold">popular</span>{" "}
         Categories

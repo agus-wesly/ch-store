@@ -16,7 +16,7 @@ const Product = ({ product }: IProps) => {
           src={product.image}
           alt="product"
           fill={true}
-          className="w-[182px] h-[182px] object-cover p-3 md:w-[220px] md:h-[220px]"
+          className="w-[182px] h-[182px] object-contain p-3 md:w-[220px] md:h-[220px]"
         />
       </div>
 
