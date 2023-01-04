@@ -11,7 +11,8 @@ interface IProps {
 
 async function Categories({ params: { slug } }: IProps) {
   const categoryProduct: Product[] = await fetchers(
-    `products/category/${slug}`
+    `products/category/${slug}`,
+    60
   );
 
   return (
@@ -28,7 +29,7 @@ async function Categories({ params: { slug } }: IProps) {
           Category
         </h1>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 px-5">
         {categoryProduct.map((product) => (
           <Product key={product.id} product={product} />
         ))}

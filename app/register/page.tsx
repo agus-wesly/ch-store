@@ -39,35 +39,36 @@ const page = () => {
     }
   };
   return (
-    <div className="mt-16 mx-auto max-w-[290px] gap-3 items-center flex flex-col ">
+    <div className="mt-16 mx-5 sm:mx-auto max-w-[390px] gap-3 items-center flex flex-col bg-white px-5 pt-10 shadow-sm border-[1px] border-gray-300 pb-5">
       <h1 className="text-4xl font-semibold text-black mb-5">Sign Up</h1>
 
       <form className="flex flex-col gap-3 text-lg" onSubmit={handleSubmit}>
         <input
           placeholder="Name"
-          className="w-[290px] focus:outline-none rounded px-4 py-2 border-[#1a73e865] border-[1px]"
+          className="focus:outline-none rounded px-4 py-2 border-slate-300 border-[1px]"
           type="text"
           ref={nameRef}
           name="name"
           required
-          autoComplete={"false"}
+          autoComplete={"off"}
         />
 
         <input
           placeholder="Email"
-          className="w-[290px] focus:outline-none rounded px-4 py-2 border-[#1a73e865] border-[1px]"
+          className="focus:outline-none rounded px-4 py-2 border-slate-300 border-[1px]"
           type="text"
           ref={emailRef}
           name="username"
           required
-          autoComplete="false"
+          autoComplete="off"
         />
 
         <input
           placeholder="Password"
+          autoComplete="off"
           type="password"
           ref={passRef}
-          className="w-[290px] focus:outline-none px-4 rounded py-2 border-[#1a73e865] border-[1px]"
+          className="focus:outline-none px-4 rounded py-2 border-slate-300 border-[1px]"
           name="pass"
           required
         />
@@ -75,7 +76,7 @@ const page = () => {
         <input
           placeholder="Confirm Password"
           type="password"
-          className="w-[290px] focus:outline-none px-4 rounded py-2 border-[#1a73e865] border-[1px]"
+          className="focus:outline-none px-4 rounded py-2 border-slate-300 border-[1px]"
           ref={confirmRef}
           name="pass"
           required
@@ -83,7 +84,7 @@ const page = () => {
 
         <button
           type="submit"
-          className="bg-[#1a73e8] hover:bg-[#2b87ff] mt-5 rounded-lg text-center text-white py-3"
+          className="bg-primary hover:bg-primary-dark mt-5 rounded-lg text-center text-white py-3"
         >
           Sign Up
         </button>

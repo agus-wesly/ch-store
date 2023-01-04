@@ -31,28 +31,33 @@ const page = () => {
   };
 
   return (
-    <div className="mt-16 mx-auto max-w-[290px] gap-3 items-center flex flex-col ">
+    <div className="mt-16 mx-5 rounded-md sm:mx-auto max-w-[390px] shadow-sm gap-3 items-center flex flex-col bg-white p-10 border-[1px] border-gray-300">
       <h1 className="text-4xl font-semibold text-black mb-5">Sign In</h1>
-      <form className="flex flex-col gap-3 text-lg" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col px-10 gap-3 text-lg"
+        onSubmit={handleSubmit}
+      >
         <input
+          autoComplete="off"
           ref={emailRef}
           placeholder="Email"
-          className="w-[290px] focus:outline-none rounded px-4 py-2 border-slate-300 border-[1px]"
+          className="focus:outline-none rounded px-4 py-2 border-slate-300 border-[1px]"
           type="text"
           name="username"
         />
 
         <input
+          autoComplete="off"
           ref={pwdRef}
           placeholder="Password"
           type="password"
-          className="w-[290px] focus:outline-none px-4 rounded py-2 border-slate-300 border-[1px]"
+          className="focus:outline-none px-4 rounded py-2 border-slate-300 border-[1px]"
           name="pass"
         />
 
         <button
           type="submit"
-          className="bg-[#1a73e8] hover:bg-[#2b87ff] mt-5 rounded-lg text-center text-white py-3"
+          className="bg-primary hover:bg-primary-dark mt-5 rounded-lg text-center text-white py-3"
         >
           Login
         </button>
