@@ -9,7 +9,7 @@ const Product = ({ product }: IProps) => {
   return (
     <Link
       href={`/product/${product.id}`}
-      className="flex flex-col max-w-[196px] bg-white shadow-md cursor-pointer md:max-w-auto"
+      className="flex flex-col max-w-[196px] bg-white shadow-md cursor-pointer md:max-w-[220px]"
     >
       <div className="relative w-full h-[260px]">
         <Image
@@ -27,7 +27,7 @@ const Product = ({ product }: IProps) => {
           </p>
         </div>
 
-        <p className="text-[#1A1A1A] line-clamp-3 text-sm md:text-base px-3 min-h-[60px]">
+        <p className="text-[#1A1A1A] line-clamp-3 text-sm md:text-base px-3 min-h-[60px] md:min-h-[72px]">
           {product.title}
         </p>
 

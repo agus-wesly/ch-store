@@ -1,4 +1,5 @@
 import { Categories as allCategories } from "../constant";
+import Link from "next/link";
 
 function Categories() {
   return (
@@ -10,7 +11,8 @@ function Categories() {
 
       <div className="grid grid-cols-2 gap-5 lg:flex lg:space-x-3 lg:h-[342px]">
         {allCategories.map((categ, i) => (
-          <div
+          <Link
+            href={`categories/${categ.title}`}
             key={i}
             className={`relative cursor-pointer rounded-lg py-5 flex max-h-[120px] items-center bg-[#82846D] max-w-[185px] lg:max-w-none lg:bg-transparent lg:max-h-max lg:h-full ${
               i === 2 ? "lg:flex-[2]" : "lg:flex-1"
@@ -23,14 +25,14 @@ function Categories() {
             />
 
             <div className="w-[70%] flex flex-col space-y-3 px-3 lg:w-full lg:text-center lg:rounded-bl-lg lg:rounded-br-lg lg:bg-black/50 lg:backdrop-blur-xl lg:absolute lg:bottom-0 lg:left-0">
-              <h3 className="text-white capitalize font-bold lg:text-lg">
+              <h3 className="text-white capitalize font-bold text-sm lg:text-lg">
                 {categ.title}
               </h3>
               <p className="text-xs text-neutral-50 line-clamp-3 lg:hidden">
                 {categ.subTitel}
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
