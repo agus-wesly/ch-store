@@ -1,10 +1,14 @@
-import Search from "./Search";
 import Link from "next/link";
-import ShopImage from "../components/ShopImage";
+import Search from "../Search";
+import ShopImage from "../../components/ShopImage";
 
-function Navbar() {
+interface IProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: IProps) {
   return (
-    <>
+    <main className="max-w-6xl mx-auto pb-5 p-5">
       <nav className="w-full left-0 bg-neutral-100 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.07)] z-10 px-5 md:px-10 py-5 flex items-center fixed z-5 top-0 justify-between space-x-5">
         <Link href="/">
           <h1 className="text-black font-semibold text-2xl">
@@ -31,11 +35,7 @@ function Navbar() {
           </Link>
         </div>
       </nav>
-      <div className="flex md:hidden px-5 mt-20">
-        <Search />
-      </div>
-    </>
+      {children}
+    </main>
   );
 }
-
-export default Navbar;

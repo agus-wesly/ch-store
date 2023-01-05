@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/globals.css";
-const ProviderAuth = dynamic(() => import("../ProviderAuth"), { ssr: false });
+const CartProvider = dynamic(() => import("./CartProvider"), { ssr: false });
 import { Epilogue } from "@next/font/google";
 import dynamic from "next/dynamic";
 
@@ -19,7 +19,7 @@ export default function RootLayout({ children }: IProps) {
     <html className={epilogue.variable}>
       <head />
       <body className="bg-neutral-100">
-        <ProviderAuth>{children}</ProviderAuth>
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );

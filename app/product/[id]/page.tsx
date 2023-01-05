@@ -3,6 +3,7 @@ import Image from "next/image";
 import fetchers from "../../../utils";
 import Link from "next/link";
 import Recommendation from "./Recommendation";
+import AddBtn from "./AddBtn";
 
 interface IProps {
   params: {
@@ -65,9 +66,7 @@ async function page({ params: { id } }: IProps) {
         </div>
 
         <div className="hidden md:flex flex-col my-5 space-y-5 px-5 md:px-10 flex-[0.75]">
-          <button className="text-center py-3 font-bold text-white text-lg cursor-pointer bg-primary rounded">
-            Add to cart
-          </button>
+          <AddBtn product={product} />
           <button className="text-center py-3 border-2 border-primary bg-opacity-90 font-bold text-primary text-lg cursor-pointer bg-white rounded">
             Share
           </button>
@@ -75,9 +74,7 @@ async function page({ params: { id } }: IProps) {
       </div>
 
       <div className="flex flex-col my-5 space-y-5 px-5 md:hidden">
-        <button className="text-center py-3 font-bold text-white text-lg cursor-pointer bg-primary rounded">
-          Add to cart
-        </button>
+        <AddBtn product={product} />
         <button className="text-center py-3 border-2 border-primary bg-opacity-90 font-bold text-primary text-lg cursor-pointer bg-white rounded">
           Share
         </button>
