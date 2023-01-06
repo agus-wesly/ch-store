@@ -1,8 +1,9 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../utils/firebase";
+import { signInWithEmailAndPassword, User } from "firebase/auth";
+import { auth, db } from "../../../utils/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -22,8 +23,19 @@ export const authOptions: NextAuthOptions = {
         if (!email && !pwd) return null;
         try {
           const { user } = await signInWithEmailAndPassword(auth, email!, pwd!);
+
+          //Getting data from firestore
+          const docRef = doc(db, "users", user.uid!);
+          const docSnap = await getDoc(docRef);
+
+          if (!docSnap.exists()) {
+            return null;
+          }
+          const data = docSnap.data();
+
           return {
             id: user.uid,
+            name: data.name,
             email: user.email,
           };
         } catch (error) {

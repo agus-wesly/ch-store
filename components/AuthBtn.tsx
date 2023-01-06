@@ -5,7 +5,6 @@ import Link from "next/link";
 
 function AuthBtn() {
   const { data: session } = useSession();
-  console.log(session);
 
   return (
     <>
