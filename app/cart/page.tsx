@@ -92,7 +92,7 @@ function Cart() {
         </h1>
       </div>
 
-      <div className="flex flex-col md:flex-row md: space-x-10">
+      <div className="flex flex-col md:flex-row md:space-x-10">
         <div className="flex flex-col space-y-5 pb-20 md:flex-1">
           {state.products && state.products.length ? (
             state.products.map((card) => (
@@ -137,7 +137,7 @@ function Cart() {
           </button>
         </div>
 
-        <div className="fixed bottom-0 left-0  w-full p-10 py-3 pr-5 md:hidden flex justify-between items-center bg-white/70 backdrop-blur-xl">
+        <div className="fixed bottom-0 left-0 w-full p-10 py-3 pr-5 md:hidden flex justify-between items-center bg-white/70 backdrop-blur-xl">
           <div className="space-y-1">
             <p className="text-gray-700 font-medium text-base">Total Price</p>
 

@@ -17,7 +17,7 @@ async function Categories({ params: { slug } }: IProps) {
 
   return (
     <div className="max-w-6xl mx-auto pb-5">
-      <Navbar />
+      <Navbar isShowSearch={true} />
       <div className="flex items-center p-5 pt-10 md:pt-36 space-x-5">
         <Link href={"/"} className="text-lg font-bold cursor-pointer">
           &#8592;

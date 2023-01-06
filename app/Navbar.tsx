@@ -6,7 +6,11 @@ import ShopImage from "../components/ShopImage";
 import AuthBtn from "../components/AuthBtn";
 import { useSession } from "next-auth/react";
 
-function Navbar() {
+interface IProps {
+  isShowSearch: boolean;
+}
+
+function Navbar({ isShowSearch }: IProps) {
   const { data: session } = useSession();
   return (
     <>
@@ -16,9 +20,11 @@ function Navbar() {
             <span className="text-primary">CH</span> -STORE
           </h1>
         </Link>
-        <div className="hidden md:flex flex-1">
-          <Search />
-        </div>
+        {isShowSearch && (
+          <div className="hidden md:flex flex-1">
+            <Search />
+          </div>
+        )}
 
         <div className="flex items-center space-x-5">
           <ShopImage />
@@ -37,9 +43,11 @@ function Navbar() {
           <AuthBtn />
         </div>
       </nav>
-      <div className="flex md:hidden px-5 mt-20">
-        <Search />
-      </div>
+      {isShowSearch && (
+        <div className="flex md:hidden px-5 mt-20">
+          <Search />
+        </div>
+      )}
     </>
   );
 }
