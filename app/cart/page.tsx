@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Dispatch, useContext, useEffect } from "react";
 import { CartContext } from "../CartProvider";
 import { ACTION_TYPE } from "../CartProvider";
+import { useSession } from "next-auth/react";
 
 const CardItem = ({
   item,
@@ -73,10 +74,17 @@ const CardItem = ({
 function Cart() {
   const router = useRouter();
   const { state, dispatch } = useContext(CartContext);
+  const { data: session } = useSession();
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(state.products));
-  }, [state]);
+    session?.user &&
+      localStorage.setItem("cart", JSON.stringify(state.products));
+  }, [state, session]);
+
+  if (!session?.user) {
+    router.push("/auth");
+    return <p>Loading...</p>;
+  }
 
   return (
     <>

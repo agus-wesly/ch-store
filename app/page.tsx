@@ -10,7 +10,7 @@ const page = () => {
   return (
     <div className="w-screen overflow-x-hidden">
       {/* @ts-ignore */}
-      <Navbar />
+      <Navbar isShowSearch={true} />
       <Homepage />
       <Categories />
       {/* @ts-ignore */}
