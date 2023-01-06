@@ -14,11 +14,11 @@ interface IProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: IProps) {
+export default async function RootLayout({ children }: IProps) {
   return (
     <html className={epilogue.variable}>
       <head />
-      <body className="bg-neutral-100">
+      <body className="bg-neutral-100 overflow-x-hidden">
         <CartProvider>{children}</CartProvider>
       </body>
     </html>

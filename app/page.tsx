@@ -9,6 +9,7 @@ import Footer from "./Footer";
 const page = () => {
   return (
     <div className="w-screen overflow-x-hidden">
+      {/* @ts-ignore */}
       <Navbar />
       <Homepage />
       <Categories />

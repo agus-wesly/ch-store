@@ -27,12 +27,3 @@ function Homepage() {
 }
 
 export default Homepage;
-
-// {
-//     "user": {
-//       "name": "Rick",
-//       "email": "agustchannel@gmail.com",
-//       "image": "https://lh3.googleusercontent.com/a/AEdFTp7usty-jaxj99xbvmYHKRU6DxFRGNB5RkVFggR7=s96-c"
-//     },
-//     "expires": "2023-01-30T13:42:44.971Z"
-//   }

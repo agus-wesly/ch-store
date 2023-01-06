@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, ReactNode, useReducer } from "react";
+import { SessionProvider } from "next-auth/react";
 
 interface initialState {
   products: cartItem[] | null;
@@ -103,7 +104,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
 
   return (
     <CartContext.Provider value={{ state, dispatch }}>
-      {children}
+      <SessionProvider>{children}</SessionProvider>
     </CartContext.Provider>
   );
 }

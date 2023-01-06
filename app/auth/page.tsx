@@ -16,7 +16,7 @@ const page = () => {
           username: emailRef.current.value,
           password: pwdRef.current.value,
           redirect: true,
-          callbackUrl: "/",
+          callbackUrl: process.env.VERCEL_URL || "http://localhost:3000",
         });
       }
     } catch (error) {
@@ -26,7 +26,7 @@ const page = () => {
 
   const handleGoogleLogin = () => {
     signIn("google", {
-      callbackUrl: "http://localhost:3000/",
+      callbackUrl: process.env.VERCEL_URL || "http://localhost:3000",
     });
   };
 

@@ -35,7 +35,7 @@ const page = () => {
       });
       console.log("created");
 
-      router.push("/");
+      router.push("/auth");
     }
   };
   return (
