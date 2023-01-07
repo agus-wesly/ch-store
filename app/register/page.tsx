@@ -89,6 +89,15 @@ const page = () => {
           Sign Up
         </button>
       </form>
+      <p className="text-sm text-black">
+        Already have account ?{" "}
+        <span
+          className="text-primary hover:underline cursor-pointer"
+          onClick={() => router.push("/auth")}
+        >
+          Sign In
+        </span>
+      </p>
       <span className="text-base flex items-center mt-3 w-full gap-3">
         <div className="h-[1px] bg-slate-300  flex-1 w-full" />
         OR

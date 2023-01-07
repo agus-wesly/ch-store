@@ -15,7 +15,7 @@ export const fadeUpNoDelay = {
   },
 };
 
-export const fadeUp = (delay: number, opposite: boolean = false) => ({
+export const fadeUp = (delay: number = 0, opposite: boolean = false) => ({
   hidden: {
     opacity: 0,
     y: !opposite ? 50 : -50,

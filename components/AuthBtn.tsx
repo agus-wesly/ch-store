@@ -6,11 +6,16 @@ import Link from "next/link";
 function AuthBtn() {
   const { data: session } = useSession();
 
+  const handleLogout = () => {
+    localStorage.removeItem("cart");
+    signOut();
+  };
+
   return (
     <>
       {session?.user ? (
         <button
-          onClick={() => signOut()}
+          onClick={handleLogout}
           className="bg-red-500 cursor-pointer px-4 py-2 rounded font-semibold text-white hover:scale-105 transition duration-200"
         >
           Logout

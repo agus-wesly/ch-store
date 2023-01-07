@@ -31,7 +31,7 @@ async function Categories({ params: { slug } }: IProps) {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 px-5">
         {categoryProduct.map((product, i) => (
-          <Product key={product.id} product={product} idx={i} />
+          <Product key={product.id} product={product} />
         ))}
       </div>
     </div>

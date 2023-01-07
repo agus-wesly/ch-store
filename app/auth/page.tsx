@@ -2,6 +2,7 @@
 
 import { FormEvent, useRef } from "react";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 const page = () => {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -62,6 +63,12 @@ const page = () => {
           Login
         </button>
       </form>
+      <p className="text-sm text-black">
+        Don't have account ?{" "}
+        <Link className="text-primary hover:underline" href={"/register"}>
+          Sign Up
+        </Link>
+      </p>
       <span className="text-base flex items-center mt-3 w-full gap-3">
         <div className="h-[1px] bg-slate-300  flex-1 w-full" />
         OR

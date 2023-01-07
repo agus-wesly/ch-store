@@ -15,7 +15,7 @@ async function Recommendation({ category }: IProps) {
       <h1 className="text-xl text-black/95 font-bold ">You might also like</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
         {recommendProduct.map((product, i) => (
-          <Product key={product.id} product={product} idx={i} />
+          <Product key={product.id} product={product} />
         ))}
       </div>
     </div>

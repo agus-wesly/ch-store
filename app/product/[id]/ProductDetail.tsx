@@ -15,6 +15,7 @@ function ProductDetail({ product }: IProps) {
       initial="hidden"
       whileInView="show"
       variants={staggerContainer}
+      viewport={{ once: true }}
       className="m-5 mt-0 bg-white md:bg-transparent md:border-none border-2 shadow-lg border-[#623CEA] md:shadow-none border-opacity-40 flex flex-col items-start p-5 md:px-0 md:flex-row"
     >
       <motion.div
@@ -33,17 +34,20 @@ function ProductDetail({ product }: IProps) {
 
       <motion.div
         variants={fadeUpNoDelay}
+        viewport={{ once: true }}
         className="space-y-3 my-5 md:px-10 md:max-w-[500px] md:mx-auto flex-1"
       >
         <div className="flex items-center justify-between gap-3">
           <motion.p
             variants={fadeUp(0.2)}
+            viewport={{ once: true }}
             className="font-bold text-base text-gray-900/90"
           >
             {product.title}
           </motion.p>
           <motion.p
             variants={fadeUp(0.25)}
+            viewport={{ once: true }}
             className="font-bold text-primary/90 text-xs capitalize md:hidden"
           >
             {product.category}
@@ -55,6 +59,7 @@ function ProductDetail({ product }: IProps) {
 
         <motion.p
           variants={fadeUp(0.35)}
+          viewport={{ once: true }}
           className="text-xs font-bold text-gray-500"
         >
           {product.rating.count} stocks left
@@ -62,12 +67,14 @@ function ProductDetail({ product }: IProps) {
 
         <motion.h5
           variants={fadeUp(0.4)}
+          viewport={{ once: true }}
           className="hidden md:flex font-semibold text-lg text-gray-900"
         >
           Description
         </motion.h5>
         <motion.p
           variants={fadeUp(0.45)}
+          viewport={{ once: true }}
           className="hidden md:flex text-gray-700 text-base"
         >
           {product.description}
@@ -81,6 +88,7 @@ function ProductDetail({ product }: IProps) {
 
       <motion.div
         variants={fadeUpNoDelay}
+        viewport={{ once: true }}
         className="hidden md:flex flex-col my-5 space-y-5 px-5 md:px-10 flex-[0.75]"
       >
         <AddBtn product={product} />

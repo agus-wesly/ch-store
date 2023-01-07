@@ -7,15 +7,14 @@ import { fadeUp } from "../utils/motion";
 
 interface IProps {
   product: Product;
-  idx: number;
 }
 
-const Product = ({ product, idx }: IProps) => {
+const Product = ({ product }: IProps) => {
   const router = useRouter();
   return (
     <motion.div
       initial="hidden"
-      variants={fadeUp(idx * 0.05)}
+      variants={fadeUp()}
       whileInView="show"
       whileHover={{ scale: 1.05 }}
       viewport={{ once: true, amount: 0 }}
