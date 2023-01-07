@@ -82,7 +82,7 @@ function Cart() {
   }, [state, session]);
 
   if (!session?.user) {
-    router.push("/auth");
+    router.replace("/auth");
     return <p>Loading...</p>;
   }
 
@@ -145,7 +145,7 @@ function Cart() {
           </button>
         </div>
 
-        <div className="fixed bottom-0 left-0 w-full p-10 py-3 pr-5 md:hidden flex justify-between items-center bg-white/70 backdrop-blur-xl">
+        <div className="fixed bottom-0 z-[3] left-0 w-full p-10 py-3 pr-5 md:hidden flex justify-between items-center bg-white/70 backdrop-blur-xl">
           <div className="space-y-1">
             <p className="text-gray-700 font-medium text-base">Total Price</p>
 

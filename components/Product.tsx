@@ -1,14 +1,24 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { fadeUp } from "../utils/motion";
 
 interface IProps {
   product: Product;
+  idx: number;
 }
 
-const Product = ({ product }: IProps) => {
+const Product = ({ product, idx }: IProps) => {
+  const router = useRouter();
   return (
-    <Link
-      href={`/product/${product.id}`}
+    <motion.div
+      initial="hidden"
+      variants={fadeUp(idx * 0.1)}
+      whileInView="show"
+      viewport={{ once: false, amount: 0 }}
+      onClick={() => router.push(`/product/${product.id}`)}
       className="flex flex-col max-w-[196px] bg-white shadow-md cursor-pointer md:max-w-[220px]"
     >
       <div className="relative w-full h-[260px]">
@@ -47,7 +57,7 @@ const Product = ({ product }: IProps) => {
           </div>
         </div>
       </div>
-    </Link>
+    </motion.div>
   );
 };
 

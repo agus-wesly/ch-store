@@ -1,7 +1,12 @@
+"use client";
+
 import { Categories as allCategories } from "../constant";
-import Link from "next/link";
+import { motion } from "framer-motion";
+import { staggerContainer, slideRight } from "../utils/motion";
+import { useRouter } from "next/navigation";
 
 function Categories() {
+  const router = useRouter();
   return (
     <div className="max-w-6xl mx-auto py-5 px-5 lg:px-10 space-y-5">
       <h1 className="text-xl text-black/95 font-bold">
@@ -9,11 +14,19 @@ function Categories() {
         Categories
       </h1>
 
-      <div className="grid grid-cols-2 gap-5 lg:flex lg:space-x-3 lg:h-[342px]">
+      <motion.div
+        variants={staggerContainer}
+        whileInView="show"
+        className="grid grid-cols-2 gap-5 lg:flex lg:space-x-3 lg:h-[342px]"
+      >
         {allCategories.map((categ, i) => (
-          <Link
-            href={`categories/${categ.title}`}
-            key={i}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            variants={slideRight(i * 0.08)}
+            onClick={() => router.push(`categories/${categ.title}`)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: false }}
             className={`relative cursor-pointer rounded-lg py-5 flex max-h-[120px] items-center bg-[#82846D] max-w-[185px] lg:max-w-none lg:bg-transparent lg:max-h-max lg:h-full ${
               i === 2 ? "lg:flex-[2]" : "lg:flex-1"
             }`}
@@ -32,9 +45,9 @@ function Categories() {
                 {categ.subTitel}
               </p>
             </div>
-          </Link>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
