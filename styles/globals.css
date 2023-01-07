@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.gradient_1 {
+  background: radial-gradient(
+    39.83% 43% at 10.17% 98.26%,
+    rgba(38, 0, 174, 0.15) 27.6%,
+    rgba(47, 11, 177, 0.15) 99.99%
+  );
+}
+
+.gradient_2 {
+  background: linear-gradient(0deg, #2600ae, #2600ae);
+}
