@@ -11,14 +11,14 @@ function AuthBtn() {
       {session?.user ? (
         <button
           onClick={() => signOut()}
-          className="bg-red-500 cursor-pointer px-4 py-2 rounded font-semibold text-white"
+          className="bg-red-500 cursor-pointer px-4 py-2 rounded font-semibold text-white hover:scale-105 transition duration-200"
         >
           Logout
         </button>
       ) : (
         <Link
           href="/auth"
-          className="bg-primary cursor-pointer px-4 py-2 rounded font-semibold text-white"
+          className="bg-primary cursor-pointer px-4 py-2 rounded font-semibold text-white placeholder: hover:scale-105 transition duration-200"
         >
           Login
         </Link>

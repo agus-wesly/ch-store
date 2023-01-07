@@ -15,9 +15,10 @@ const Product = ({ product, idx }: IProps) => {
   return (
     <motion.div
       initial="hidden"
-      variants={fadeUp(idx * 0.1)}
+      variants={fadeUp(idx * 0.05)}
       whileInView="show"
-      viewport={{ once: false, amount: 0 }}
+      whileHover={{ scale: 1.05 }}
+      viewport={{ once: true, amount: 0 }}
       onClick={() => router.push(`/product/${product.id}`)}
       className="flex flex-col max-w-[196px] bg-white shadow-md cursor-pointer md:max-w-[220px]"
     >

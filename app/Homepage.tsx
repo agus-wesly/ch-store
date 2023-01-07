@@ -1,19 +1,9 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { fadeUp } from "../utils/motion";
 
 function Homepage() {
   return (
     <div className="max-w-6xl mx-auto my-5 md:mt-32 px-5 md:px-10">
-      <motion.div
-        initial="hidden"
-        whileInView={"show"}
-        variants={fadeUp()}
-        viewport={{ once: true, amount: 1 }}
-        className="rounded-lg p-5 bg-primary-dark text-white flex flex-col gap-5 md:max-h-[242px] overflow-hidden relative lg:justify-evenly lg:py-7"
-      >
+      <div className="rounded-lg p-5 bg-primary-dark text-white flex flex-col gap-5 md:max-h-[242px] overflow-hidden relative lg:justify-evenly lg:py-7">
         <div className="absolute w-[292px] h-[147px] md:w-[788px] md:h-[500px] -right-10 top-0 md:right-0 md:-top-12">
           <Image
             src={"/shopping.png"}
@@ -32,7 +22,7 @@ function Homepage() {
           <p>Shop Now</p>
           <span>&#8594;</span>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

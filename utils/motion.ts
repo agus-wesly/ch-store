@@ -1,6 +1,21 @@
 const easing = [0.6, -0.05, 0.01, 0.99];
 
-export const fadeUp = (delay: number = 0, opposite: boolean = false) => ({
+export const fadeUpNoDelay = {
+  hidden: {
+    opacity: 0,
+    y: 50,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: easing,
+    },
+  },
+};
+
+export const fadeUp = (delay: number, opposite: boolean = false) => ({
   hidden: {
     opacity: 0,
     y: !opposite ? 50 : -50,
@@ -11,20 +26,16 @@ export const fadeUp = (delay: number = 0, opposite: boolean = false) => ({
     transition: {
       delay,
       duration: 0.6,
-      type: "tween",
       ease: easing,
     },
   },
 });
 
 export const staggerContainer = {
-  hidden: {
-    opacity: 0,
-  },
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.1,
     },
   },
 };
@@ -39,7 +50,6 @@ export const slideRight = (delay: number) => ({
     x: 0,
     transition: {
       duration: 0.5,
-      type: "tween",
       delay,
       ease: easing,
     },

@@ -26,7 +26,7 @@ function Categories() {
             onClick={() => router.push(`categories/${categ.title}`)}
             initial="hidden"
             whileInView={"show"}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             className={`relative cursor-pointer rounded-lg py-5 flex max-h-[120px] items-center bg-[#82846D] max-w-[185px] lg:max-w-none lg:bg-transparent lg:max-h-max lg:h-full ${
               i === 2 ? "lg:flex-[2]" : "lg:flex-1"
             }`}
