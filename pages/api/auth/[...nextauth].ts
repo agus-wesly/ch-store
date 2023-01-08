@@ -1,7 +1,7 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import { signInWithEmailAndPassword, User } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../../utils/firebase";
 import { doc, getDoc } from "firebase/firestore";
 

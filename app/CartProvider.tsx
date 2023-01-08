@@ -5,24 +5,32 @@ import { SessionProvider } from "next-auth/react";
 
 interface initialState {
   products: cartItem[] | null;
+  prevUrl: string;
 }
 export const ACTION_TYPE: {
   addItem: "ADD";
   decrItem: "DECREASE";
   delItem: "REMOVE";
+  addURL: "ADD_URL";
+  removeURL: "REMOVE_URL";
 } = {
   addItem: "ADD",
   decrItem: "DECREASE",
   delItem: "REMOVE",
+  addURL: "ADD_URL",
+  removeURL: "REMOVE_URL",
 };
 
 type Action =
   | { type: typeof ACTION_TYPE.delItem; payload: number }
   | { type: typeof ACTION_TYPE.decrItem; payload: number }
-  | { type: typeof ACTION_TYPE.addItem; payload: cartItem };
+  | { type: typeof ACTION_TYPE.addItem; payload: cartItem }
+  | { type: typeof ACTION_TYPE.addURL; payload: string }
+  | { type: typeof ACTION_TYPE.removeURL };
 
 const initialState: initialState = {
   products: JSON.parse(localStorage.getItem("cart") || "null"),
+  prevUrl: "",
 };
 
 export const CartContext = createContext<{
@@ -34,7 +42,7 @@ export const CartContext = createContext<{
 });
 
 const reducer = (state: initialState, action: Action) => {
-  const { products } = state;
+  const { products, prevUrl } = state;
   switch (action.type) {
     case "ADD":
       if (products?.length && state.products !== null) {
@@ -46,6 +54,7 @@ const reducer = (state: initialState, action: Action) => {
         //If found then update the array
         if (found >= 0) {
           return {
+            prevUrl,
             products: products.map((pro, i) => {
               if (i === found) {
                 return { ...pro, ...action.payload };
@@ -55,10 +64,12 @@ const reducer = (state: initialState, action: Action) => {
           };
         }
         return {
+          prevUrl,
           products: [...products, { ...action.payload, qty: 1 }],
         };
       }
       return {
+        prevUrl,
         products: [{ ...action.payload, qty: 1 }],
       };
     case "DECREASE":
@@ -70,13 +81,13 @@ const reducer = (state: initialState, action: Action) => {
       //Check if the product qty is 1, if yes then remove it
       if (findProd.qty === 1) {
         return {
+          prevUrl,
           products: products.filter((prod) => prod.id !== findProd.id),
         };
       }
 
-      console.log("Executed");
-
       return {
+        prevUrl,
         products: products.map((prod) => {
           if (prod === findProd) {
             return {
@@ -88,9 +99,22 @@ const reducer = (state: initialState, action: Action) => {
         }),
       };
 
+    case "ADD_URL":
+      return {
+        products,
+        prevUrl: action.payload,
+      };
+
+    case "REMOVE_URL":
+      return {
+        products,
+        prevUrl: "",
+      };
+
     case "REMOVE":
       if (!products?.length) return state;
       return {
+        prevUrl,
         products: products.filter((product) => product.id !== action.payload),
       };
 
@@ -108,17 +132,3 @@ export default function CartProvider({ children }: { children: ReactNode }) {
     </CartContext.Provider>
   );
 }
-
-// {
-//   "products": {
-//     "products": [
-//       {
-//         "id": 1,
-//         "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
-//         "price": 109.95,
-//         "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-//         "qty": 2
-//       }
-//     ]
-//   }
-// }

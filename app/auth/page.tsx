@@ -2,11 +2,15 @@
 
 import { FormEvent, useRef } from "react";
 import { signIn } from "next-auth/react";
+import { useContext } from "react";
+import { CartContext } from "../CartProvider";
+
 import Link from "next/link";
 
 const page = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const pwdRef = useRef<HTMLInputElement>(null);
+  const { state } = useContext(CartContext);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,13 +30,19 @@ const page = () => {
   };
 
   const handleGoogleLogin = () => {
-    signIn("google", {
-      callbackUrl: process.env.VERCEL_URL || "http://localhost:3000",
-    });
+    const getUrl = () => {
+      const baseURL = process.env.VERCEL_URL || "http://localhost:3000";
+      return state.prevUrl ? `${baseURL}${state.prevUrl}` : baseURL;
+    };
+
+    const options = {
+      callbackUrl: getUrl(),
+    };
+    signIn("google", options);
   };
 
   return (
-    <div className="mt-16 mx-5 rounded-md sm:mx-auto max-w-[390px] shadow-sm gap-3 items-center flex flex-col bg-white p-10 border-[1px] border-gray-300">
+    <div className="mt-16 mx-5 rounded-md sm:mx-auto max-w-[390px] md:mb-20 shadow-sm gap-3 items-center flex flex-col bg-white p-10 border-[1px] border-gray-300">
       <h1 className="text-4xl font-semibold text-black mb-5">Sign In</h1>
       <form
         className="flex flex-col px-10 gap-3 text-lg"

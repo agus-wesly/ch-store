@@ -21,6 +21,7 @@ function Categories() {
       >
         {allCategories.map((categ, i) => (
           <motion.div
+            key={i}
             whileHover={{ scale: 1.05 }}
             variants={slideRight(i * 0.08)}
             onClick={() => router.push(`categories/${categ.title}`)}

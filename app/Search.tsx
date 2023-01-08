@@ -14,7 +14,7 @@ function Search() {
   };
 
   return (
-    <div className="w-full items-center mt-5 lg:mt-0 flex bg-white border-2 border-gray-300 pr-5">
+    <div className="w-full items-center mt-5 md:mt-0 flex bg-white border-2 border-gray-300 pr-5">
       <input
         type="text"
         ref={inputRef}
