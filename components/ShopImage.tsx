@@ -1,14 +1,23 @@
 "use client";
 
-import Link from "next/link";
 import { useContext } from "react";
-import { CartContext } from "../app/CartProvider";
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { CartContext, ACTION_TYPE } from "../app/CartProvider";
 
 function ShopImage() {
-  const { state } = useContext(CartContext);
+  const { state, dispatch } = useContext(CartContext);
+  const router = useRouter();
+  const pathName = usePathname();
 
   return (
-    <Link href="/cart" className="w-6 h-6 cursor-pointer relative">
+    <div
+      onClick={() => {
+        dispatch({ type: ACTION_TYPE.addURL, payload: pathName });
+        router.push("/cart");
+      }}
+      className="w-6 h-6 cursor-pointer relative"
+    >
       <img
         src="/shop-cart.svg"
         alt="shopCart"
@@ -19,7 +28,7 @@ function ShopImage() {
           {state.products.length}
         </div>
       ) : null}
-    </Link>
+    </div>
   );
 }
 

@@ -18,9 +18,6 @@ const page = () => {
     return state.prevUrl ? `${baseURL}${state.prevUrl}` : baseURL;
   };
 
-  console.log(getUrl());
-  console.log(baseURL);
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
