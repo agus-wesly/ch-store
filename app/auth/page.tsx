@@ -12,6 +12,15 @@ const page = () => {
   const pwdRef = useRef<HTMLInputElement>(null);
   const { state } = useContext(CartContext);
 
+  const baseURL = process.env.VERCEL_URL || "http://localhost:3000";
+
+  const getUrl = () => {
+    return state.prevUrl ? `${baseURL}${state.prevUrl}` : baseURL;
+  };
+
+  console.log(getUrl());
+  console.log(baseURL);
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -21,7 +30,7 @@ const page = () => {
           username: emailRef.current.value,
           password: pwdRef.current.value,
           redirect: true,
-          callbackUrl: process.env.VERCEL_URL || "http://localhost:3000",
+          callbackUrl: getUrl(),
         });
       }
     } catch (error) {
@@ -30,11 +39,6 @@ const page = () => {
   };
 
   const handleGoogleLogin = () => {
-    const getUrl = () => {
-      const baseURL = process.env.VERCEL_URL || "http://localhost:3000";
-      return state.prevUrl ? `${baseURL}${state.prevUrl}` : baseURL;
-    };
-
     const options = {
       callbackUrl: getUrl(),
     };
