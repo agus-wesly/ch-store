@@ -2,18 +2,15 @@
 
 import { useContext } from "react";
 import { useRouter } from "next/navigation";
-import { usePathname } from "next/navigation";
-import { CartContext, ACTION_TYPE } from "../app/CartProvider";
+import { CartContext } from "../app/CartProvider";
 
 function ShopImage() {
-  const { state, dispatch } = useContext(CartContext);
+  const { state } = useContext(CartContext);
   const router = useRouter();
-  const pathName = usePathname();
 
   return (
     <div
       onClick={() => {
-        dispatch({ type: ACTION_TYPE.addURL, payload: pathName });
         router.push("/cart");
       }}
       className="w-6 h-6 cursor-pointer relative"

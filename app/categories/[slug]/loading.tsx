@@ -1,7 +1,9 @@
 function loading() {
   return (
-    <div className="absolute inset-0 w-screen h-screen bg-white z-[5] text-center">
-      Loading...
+    <div className="min-h-screen min-w-screen flex items-center justify-center">
+      <h1 className="text-center text-xl md:text-2xl font-bold flex items-center justify-center min-h-screen">
+        Loading...
+      </h1>
     </div>
   );
 }

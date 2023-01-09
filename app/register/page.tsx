@@ -33,7 +33,6 @@ const page = () => {
         name: nameRef.current.value,
         isHandsome: false,
       });
-      console.log("created");
 
       router.push("/auth");
     }

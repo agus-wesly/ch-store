@@ -3,8 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Dispatch, useContext, useEffect } from "react";
-import { CartContext } from "../CartProvider";
-import { ACTION_TYPE } from "../CartProvider";
+import { CartContext, ACTION_TYPE } from "../CartProvider";
 import { useSession } from "next-auth/react";
 
 const CardItem = ({
@@ -81,10 +80,26 @@ function Cart() {
       localStorage.setItem("cart", JSON.stringify(state.products));
   }, [state, session]);
 
-  if (!session?.user) {
-    router.replace("/auth");
-    return <p>Loading...</p>;
-  }
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      if (!session?.user) {
+        dispatch({ type: ACTION_TYPE.addURL, payload: "/cart" });
+        router.replace("/auth");
+      }
+    }, 3000);
+    return () => {
+      clearTimeout(timeOut);
+    };
+  }, [session]);
+
+  if (!session)
+    return (
+      <div className="min-h-screen min-w-screen flex items-center justify-center">
+        <h1 className="text-center text-xl md:text-2xl font-bold flex items-center justify-center min-h-screen">
+          Loading...
+        </h1>
+      </div>
+    );
 
   return (
     <>

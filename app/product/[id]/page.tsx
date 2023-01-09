@@ -1,5 +1,4 @@
 import Navbar from "../../Navbar";
-import Image from "next/image";
 import fetchers from "../../../utils";
 import Recommendation from "./Recommendation";
 import AddBtn from "./AddBtn";
