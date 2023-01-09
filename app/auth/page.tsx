@@ -12,7 +12,7 @@ const page = () => {
   const pwdRef = useRef<HTMLInputElement>(null);
   const { state } = useContext(CartContext);
 
-  const baseURL = process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000";
+  const baseURL = process.env.NEXT_PUBLIC_VERCEL_URL;
 
   const getUrl = () => {
     return state.prevUrl ? `${baseURL}${state.prevUrl}` : baseURL;

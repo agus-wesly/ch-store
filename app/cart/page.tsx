@@ -81,14 +81,15 @@ function Cart() {
   }, [state, session]);
 
   useEffect(() => {
-    const timeOut = setTimeout(() => {
-      if (!session?.user) {
+    let timeOut: NodeJS.Timeout | undefined;
+    if (!session?.user) {
+      timeOut = setTimeout(() => {
         dispatch({ type: ACTION_TYPE.addURL, payload: "/cart" });
         router.replace("/auth");
-      }
-    }, 3000);
+      }, 3000);
+    }
     return () => {
-      clearTimeout(timeOut);
+      timeOut && clearTimeout(timeOut);
     };
   }, [session]);
 
